@@ -157,14 +157,14 @@ route_perf = filtered_df.groupby("Route")["Lead Time"].mean().reset_index()
 
 col1, col2 = st.columns(2)
 
-fig1 = px.bar(
+fig1 = bar(
     route_perf.sort_values("Lead Time", ascending=False),
     x="Route", y="Lead Time",
     title="Average Lead Time by Route"
 )
 col1.plotly_chart(fig1, use_container_width=True)
 
-fig2 = px.bar(
+fig2 = bar(
     route_perf.sort_values("Lead Time"),
     x="Lead Time", y="Route",
     orientation="h",
@@ -185,7 +185,7 @@ map_df["Delay Level"] = pd.cut(
     labels=["Fast", "Moderate", "Delayed"]
 )
 
-fig_map = px.scatter_mapbox(
+fig_map = scatter_mapbox(
     map_df,
     lat="Latitude",
     lon="Longitude",
@@ -207,7 +207,7 @@ st.header("🚢 Ship Mode Comparison")
 
 col1, col2 = st.columns(2)
 
-fig3 = px.box(
+fig3 = box(
     filtered_df,
     x="Ship Mode",
     y="Lead Time",
@@ -218,7 +218,7 @@ col1.plotly_chart(fig3, use_container_width=True)
 
 mode_avg = filtered_df.groupby("Ship Mode")["Lead Time"].mean().reset_index()
 
-fig4 = px.bar(
+fig4 = bar(
     mode_avg,
     x="Ship Mode",
     y="Lead Time",
@@ -244,7 +244,7 @@ col1, col2 = st.columns(2)
 # State performance
 state_perf = drill_df.groupby("Region")["Lead Time"].mean().reset_index()
 
-fig5 = px.bar(
+fig5 = bar(
     state_perf,
     x="Region",
     y="Lead Time",
@@ -255,7 +255,7 @@ col1.plotly_chart(fig5, use_container_width=True)
 # Gantt-style timeline
 timeline_df = drill_df.copy()
 
-fig6 = px.timeline(
+fig6 = timeline(
     timeline_df.sort_values("Ship Date").head(50),
     x_start="Ship Date",
     x_end="Delivery Date",
