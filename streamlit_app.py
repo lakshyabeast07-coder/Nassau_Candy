@@ -1,8 +1,9 @@
 # app.py
-pip install plotly
+
 import streamlit as st
 import pandas as pd
 import numpy as np
+pip3 install plotly
 import plotly.express as px
 from datetime import datetime, timedelta
 
