@@ -4,3 +4,4 @@ numpy
 plotly
 pydeck
 io
+openpyxl
